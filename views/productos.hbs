@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Productos </title>
+</head>
+<body>
+    
+    <h1> Prouctos </h1>
+    
+    <nav id="menu">
+	    <ul class="links">
+		    <li><a href="/">Home</a></li>
+		    <li><a href="/Productos"> Productos </a></li>
+		    <li><a href="/Categorias"> Categorias </a></li>
+	    </ul>
+    </nav>
+    
+
+    <form action="/productos" method="POST">
+        <input type="text" name="id" placeholder="Ingresa el ID" /><br/>
+        <input type="text" name="nombre" placeholder="Ingresa el Nombre" /><br/>
+        <input type="submit"  />
+    </form>
+
+    <table id="tablaProductos"> 
+        <thead>
+            <th> Nombre </th>
+            <th> Precio </th>
+            <th> Estado </th>
+            <th> Operaciones </th>
+        </thead>
+        <tbody class="table-group-divider" >
+            <% for(var i=0; i<listaProductos.length; i++){ %>
+            <tr> 
+                <th> <%=listaProductos[i].id %> </th>
+                <td> <%=listaProductos[i].nombre %> </td>
+                <td> <%=listaProductos[i].aprobado %> </td>
+                <td> 
+                    <a href="/productos/<%=listaProductos[i].id%>?_method=PUT" class="btn btn-outline-warning"> A / R </a>
+                    <a href="/productos/<%=listaProductos[i].id%>?_method=DELETE" class="btn btn-danger"> Eliminar </a>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table> 
+
+
+
+    <form action="/productos" method="GET">
+        <br/><input type="text" name="id" placeholder="Busqueda por ID" /><br/>
+        <input type="submit"  />   
+    </form>
+    
+    <table id="tablaProductos"> 
+        <thead>
+            <th> Nombre </th>
+            <th> Precio </th>
+            <th> Estado </th>
+        </thead>
+        <tbody class="table-group-divider">
+            
+                <tr> 
+                    <th> <%=producto.nombre %> </th>
+                    <td> <%=producto.precio %> </td>
+                    <td> <%=producto.estado %> </td>
+                </tr>
+            
+        </tbody>
+    </table>   
+
+</body>
+</html>
