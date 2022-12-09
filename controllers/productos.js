@@ -57,7 +57,7 @@ const crearProducto = async (req, res = response) => {
 
     // Guardar en DB.
     await producto.save();
-
+    res.render('Productos/productos',{producto});
     res.status(200).json(producto);
 
 }
